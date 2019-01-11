@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>fullpage</title>
+
+    <style>
+      html,body {
+        padding: 0;
+        margin: 0;
+        overflow-y: hidden
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <fullpage :pages="5" :bg-colors="['rgb(173, 94, 94)','rgb(81, 125, 146)','rgb(43, 142, 165)','rgb(220, 106, 80)','rgb(230, 218, 128)']">
+        <template slot="slot2" slot-scope="tttt">
+          <h2>当前页面</h2>
+        </template>
+        <template slot="slot1" slot-scope="slotProps">
+          <welcome :status="slotProps.status"></welcome>
+        </template>
+      </fullpage>
+    </div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
