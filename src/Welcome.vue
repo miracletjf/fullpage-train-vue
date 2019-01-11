@@ -9,18 +9,18 @@
 export default {
   data(){
     return {
-      textArray: ('Hello').split('').concat(['&nbsp;','&nbsp;','{','<br>','&nbsp;','&nbsp;','&nbsp;','&nbsp;'],('MiracleTang').split(''),['<br>','}','<br>']),
+      textArray: ('Hello').split('').concat(['&nbsp;','&nbsp;','{','<br>','&nbsp;','&nbsp;','&nbsp;','&nbsp;'],('MiracleTang').split(''),['<br>','}']),
       showTexts: [],
       pushIndex: 0,
-      appendTimer: 0,
-      cursorTimer: 0,
+      appendTimer: null,
+      cursorTimer: null,
       cursorShow: false
     }
   },
   props: ['status'],
   created(){
-    this.start(); 
-  } ,
+    this.start();
+  },
   methods:{
     start(){
       this.appendTimer = setInterval(this.appendText,100);
@@ -42,16 +42,10 @@ export default {
       clearInterval(this.cursorTimer);
     }
   },
-  watch: {
-    status(){
-      if(this.status === 'enter'){
-        this.start()
-      }else if(this.status === 'leave'){
-        this.clear();
-        this.showTexts = [];
-        this.pushIndex = 0;
-      }
-    }
+  destroyed(){
+    this.clear();
+    this.showTexts = [];
+    this.pushIndex = 0;
   }
 }
 </script>

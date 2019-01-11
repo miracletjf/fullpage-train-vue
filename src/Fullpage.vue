@@ -1,20 +1,21 @@
 <template>
+<div @wheel="wheelHandel($event)">
   <transition-group tag="ul" class="fullpage-ul"
       :name="changeName"
       @after-enter="transitionEnd"
       @after-leave="transitionEnd"
       @enter = "enterHandle"
-      @leave = "leaveHandle"
-      mode="out-in">
-    <li v-for="index in pages" 
-      @wheel="wheelHandel($event)"
-      v-show="index === showIndex"
-      :key="index" class="fullpage-item" 
-      :style="{'background-color': bgColors && bgColors[index-1]?bgColors[index-1]:'#a73'}">
-      <slot :name="'slot'+index" v-show="index === showIndex"></slot>
-      <h1>page-{{index}}</h1>
+      @leave = "leaveHandle">
+    <li v-for="list in pages" 
+      v-show="list === showIndex"
+      :key="list" class="fullpage-item" 
+      :style="{'background-color': bgColors && bgColors[list-1]?bgColors[list-1]:'#a73'}">
+      <slot :name="'slot'+list"  v-if="showIndex === list" :status="status"></slot>
+      <h1>page-{{list}}</h1>
     </li>
   </transition-group>
+</div>
+
 </template>
 
 <script>
@@ -66,7 +67,7 @@ export default {
     enterHandle(){
       this.status = 'enter'
     },
-    leaveHandle(){
+    leaveHandle(el){
       this.status = 'leave'
     }
   }

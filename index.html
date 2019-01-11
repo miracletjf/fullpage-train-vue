@@ -16,10 +16,10 @@
   <body>
     <div id="app">
       <fullpage :pages="5" :bg-colors="['rgb(173, 94, 94)','rgb(81, 125, 146)','rgb(43, 142, 165)','rgb(220, 106, 80)','rgb(230, 218, 128)']">
-        <template slot="slot2" slot-scope="tttt">
+        <template slot="slot1" slot-scope="tttt">
           <h2>当前页面</h2>
         </template>
-        <template slot="slot1" slot-scope="slotProps">
+        <template slot="slot3" slot-scope="slotProps">
           <welcome :status="slotProps.status"></welcome>
         </template>
       </fullpage>
